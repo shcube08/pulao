@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soya Pulao — A Magical Recipe Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF9A3C;
+    --turmeric: #F4C430;
+    --tomato: #E84040;
+    --mint: #4CAF7D;
+    --cream: #FFF9F0;
+    --cardamom: #7B5EA7;
+    --sky: #4FC3F7;
+    --brown: #6D4C41;
+    --pale-green: #E8F5E9;
+    --pale-orange: #FFF3E0;
+    --pale-purple: #F3E5F5;
+    --pale-blue: #E3F2FD;
+    --pale-red: #FFEBEE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== ZIGZAG TOP BORDER ===== */
+  .zigzag-top {
+    width: 100%;
+    height: 30px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--saffron) 0px, var(--saffron) 20px,
+      var(--turmeric) 20px, var(--turmeric) 40px,
+      var(--mint) 40px, var(--mint) 60px,
+      var(--tomato) 60px, var(--tomato) 80px,
+      var(--cardamom) 80px, var(--cardamom) 100px
+    );
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    background: linear-gradient(160deg, #FFF3E0 0%, #FFF9F0 50%, #E8F5E9 100%);
+    padding: 60px 30px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, #FF9A3C33, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: "";
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, #4CAF7D33, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .book-badge {
+    display: inline-block;
+    background: var(--cardamom);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.85rem;
+    padding: 6px 18px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .cover-pot {
+    font-size: 100px;
+    line-height: 1;
+    margin: 10px 0;
+    filter: drop-shadow(4px 8px 16px #FF9A3C44);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  h1.title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    color: var(--brown);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  h1.title span {
+    color: var(--saffron);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #8D6E63;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  .stars {
+    font-size: 1.6rem;
+    letter-spacing: 6px;
+  }
+
+  /* ===== WAVY DIVIDER ===== */
+  .wave {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .wave svg { display: block; }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 40px 24px;
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-emoji {
+    font-size: 2.8rem;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.15));
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.1;
+  }
+
+  /* ===== INGREDIENT CARDS ===== */
+  .ingredients-bg {
+    background: linear-gradient(135deg, #FFF8E1, #FFF3E0);
+  }
+
+  .ingredient-group-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin: 20px 0 12px;
+    padding-left: 10px;
+    border-left: 4px solid var(--saffron);
+  }
+
+  .ingredient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .ingredient-card {
+    background: white;
+    border-radius: 20px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    border: 2px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+
+  .ingredient-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  .ingredient-card.protein { border-color: #FF9A3C; }
+  .ingredient-card.veg { border-color: #4CAF7D; }
+  .ingredient-card.spice { border-color: #E84040; }
+  .ingredient-card.herb { border-color: #81C784; }
+  .ingredient-card.fat { border-color: #FFD54F; }
+
+  .ing-emoji { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+  .ing-name { font-weight: 800; font-size: 0.85rem; color: #4E342E; line-height: 1.2; }
+  .ing-qty { font-size: 0.78rem; color: #8D6E63; font-weight: 600; margin-top: 4px; }
+
+  /* ===== STEPS ===== */
+  .steps-bg {
+    background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .step-card {
+    background: white;
+    border-radius: 24px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 6px;
+    border-radius: 24px 0 0 24px;
+  }
+
+  .step-card.s1::before { background: var(--saffron); }
+  .step-card.s2::before { background: var(--sky); }
+  .step-card.s3::before { background: var(--mint); }
+  .step-card.s4::before { background: var(--tomato); }
+  .step-card.s5::before { background: var(--cardamom); }
+  .step-card.s6::before { background: var(--turmeric); }
+  .step-card.s7::before { background: var(--brown); }
+  .step-card.s8::before { background: #29B6F6; }
+  .step-card.s9::before { background: var(--mint); }
+
+  .step-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+    text-align: center;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .step-emoji-title { font-size: 1.4rem; margin-right: 6px; }
+
+  .step-detail {
+    font-size: 0.9rem;
+    color: #5D4037;
+    line-height: 1.7;
+    font-weight: 600;
+  }
+
+  .tip-bubble {
+    display: inline-block;
+    background: #FFF9C4;
+    border: 2px dashed var(--turmeric);
+    border-radius: 14px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    color: #6D4C41;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  /* ===== NUTRITION ===== */
+  .nutrition-bg {
+    background: linear-gradient(135deg, #F3E5F5, #EDE7F6);
+  }
+
+  .macro-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  @media (min-width: 500px) {
+    .macro-row { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .macro-card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .macro-icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .macro-val {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .macro-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #8D6E63;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .macro-card.cal .macro-val { color: var(--tomato); }
+  .macro-card.prot .macro-val { color: var(--mint); }
+  .macro-card.carb .macro-val { color: var(--saffron); }
+  .macro-card.fat .macro-val { color: var(--cardamom); }
+
+  .superpower-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .superpower-card {
+    background: white;
+    border-radius: 18px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  }
+
+  .sp-emoji { font-size: 1.8rem; }
+  .sp-name { font-weight: 800; font-size: 0.82rem; color: #4E342E; margin: 6px 0 4px; }
+  .sp-val { font-family: 'Fredoka One', cursive; font-size: 1rem; color: var(--cardamom); }
+
+  /* ===== COMPARISON ===== */
+  .compare-bg {
+    background: linear-gradient(135deg, #E3F2FD, #E8EAF6);
+  }
+
+  .compare-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .compare-item { }
+
+  .compare-label {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #4E342E;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .compare-label .protein-badge {
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.8rem;
+    color: var(--mint);
+  }
+
+  .bar-track {
+    height: 22px;
+    background: #E0E0E0;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.78rem;
+    color: white;
+    transition: width 1.2s cubic-bezier(.22,.61,.36,1);
+  }
+
+  /* ===== TIPS ===== */
+  .tips-bg {
+    background: linear-gradient(135deg, #FFF8E1, #FFFDE7);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .tip-card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .tip-icon { font-size: 2rem; flex-shrink: 0; }
+  .tip-text { font-size: 0.88rem; font-weight: 700; color: #5D4037; line-height: 1.5; }
+
+  /* ===== STORAGE ===== */
+  .storage-bg {
+    background: linear-gradient(135deg, #FFEBEE, #FFF8E1);
+  }
+
+  .storage-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .storage-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .storage-icon { font-size: 3rem; margin-bottom: 10px; }
+  .storage-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: var(--brown); margin-bottom: 6px; }
+  .storage-duration { font-size: 0.85rem; font-weight: 700; color: #8D6E63; }
+
+  /* ===== BACK COVER ===== */
+  .back-cover {
+    background: linear-gradient(160deg, var(--mint) 0%, #2196F3 100%);
+    padding: 50px 30px;
+    text-align: center;
+    color: white;
+  }
+
+  .back-cover h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 16px;
+  }
+
+  .back-cover p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    opacity: 0.92;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  .fact-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .fact-bubble {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ===== MISC ===== */
+  .max-w {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .dotted-line {
+    border: none;
+    border-top: 3px dashed #D7CCC8;
+    margin: 30px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BORDER -->
+<div class="zigzag-top"></div>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="max-w">
+    <div class="book-badge">✨ A Yummy Recipe Story ✨</div>
+    <div class="cover-pot">🍲</div>
+    <h1 class="title">The Magic<br><span>Soya Pulao</span></h1>
+    <p class="subtitle">A super healthy, super tasty one-pot meal!</p>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <p style="margin-top:14px; font-size:0.9rem; color:#A1887F; font-weight:600;">4 serves · 25 minutes · One pot!</p>
+  </div>
+</div>
+
+<!-- WAVE -->
+<div class="wave">
+  <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="50" width="100%">
+    <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,0 L0,0 Z" fill="#FFF9F0"/>
+    <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,50 L0,50 Z" fill="#FFF3E0"/>
+  </svg>
+</div>
+
+<!-- ===== INGREDIENTS ===== -->
+<div class="section ingredients-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">🛒</div>
+      <div>
+        <div class="section-title" style="color: var(--brown)">What You Need</div>
+        <div style="font-size:0.9rem; color:#A1887F; font-weight:700;">for 4 big, happy plates!</div>
+      </div>
+    </div>
+
+    <div class="ingredient-group-title">💪 The Protein Stars</div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card protein">
+        <span class="ing-emoji">🧱</span>
+        <div class="ing-name">Soya Chunks</div>
+        <div class="ing-qty">250g (dry)</div>
+      </div>
+      <div class="ingredient-card protein">
+        <span class="ing-emoji">🧀</span>
+        <div class="ing-name">Paneer (HP)</div>
+        <div class="ing-qty">320g</div>
+      </div>
+      <div class="ingredient-card protein">
+        <span class="ing-emoji">🌾</span>
+        <div class="ing-name">Basmati Rice</div>
+        <div class="ing-qty">120g (raw)</div>
+      </div>
+    </div>
+
+    <div class="ingredient-group-title">🥦 The Veggie Friends</div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🥕</span>
+        <div class="ing-name">Carrots</div>
+        <div class="ing-qty">3 medium (~225g)</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🫘</span>
+        <div class="ing-name">French Beans</div>
+        <div class="ing-qty">100g</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🟢</span>
+        <div class="ing-name">Green Peas</div>
+        <div class="ing-qty">100g</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🫑</span>
+        <div class="ing-name">Capsicum</div>
+        <div class="ing-qty">1 big (~150g)</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🍅</span>
+        <div class="ing-name">Tomatoes</div>
+        <div class="ing-qty">3 (~300g)</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🧅</span>
+        <div class="ing-name">Onion</div>
+        <div class="ing-qty">1 medium</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🌶️</span>
+        <div class="ing-name">Green Chillies</div>
+        <div class="ing-qty">5 slit</div>
+      </div>
+      <div class="ingredient-card veg">
+        <span class="ing-emoji">🫚</span>
+        <div class="ing-name">Ginger-Garlic</div>
+        <div class="ing-qty">1 tbsp paste</div>
+      </div>
+    </div>
+
+    <div class="ingredient-group-title">🌿 The Fresh Herbs</div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card herb">
+        <span class="ing-emoji">🌿</span>
+        <div class="ing-name">Mint Leaves</div>
+        <div class="ing-qty">small handful</div>
+      </div>
+      <div class="ingredient-card herb">
+        <span class="ing-emoji">🍃</span>
+        <div class="ing-name">Coriander</div>
+        <div class="ing-qty">small handful</div>
+      </div>
+      <div class="ingredient-card herb">
+        <span class="ing-emoji">🍋</span>
+        <div class="ing-name">Lemon</div>
+        <div class="ing-qty">½ for finishing</div>
+      </div>
+    </div>
+
+    <div class="ingredient-group-title">✨ The Magic Spices</div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🌰</span>
+        <div class="ing-name">Cumin Seeds</div>
+        <div class="ing-qty">1 tsp</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🍃</span>
+        <div class="ing-name">Bay Leaves</div>
+        <div class="ing-qty">2</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">💚</span>
+        <div class="ing-name">Cardamom</div>
+        <div class="ing-qty">3 pods</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🌸</span>
+        <div class="ing-name">Cloves</div>
+        <div class="ing-qty">4</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🪵</span>
+        <div class="ing-name">Cinnamon</div>
+        <div class="ing-qty">1 inch</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🟡</span>
+        <div class="ing-name">Turmeric</div>
+        <div class="ing-qty">½ tsp</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🔴</span>
+        <div class="ing-name">Chilli Powder</div>
+        <div class="ing-qty">1 tsp</div>
+      </div>
+      <div class="ingredient-card spice">
+        <span class="ing-emoji">🟤</span>
+        <div class="ing-name">Garam Masala</div>
+        <div class="ing-qty">½ tsp</div>
+      </div>
+    </div>
+
+    <div class="ingredient-group-title">💛 Fats (just 15g total!)</div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card fat">
+        <span class="ing-emoji">🧈</span>
+        <div class="ing-name">Ghee</div>
+        <div class="ing-qty">8g</div>
+      </div>
+      <div class="ingredient-card fat">
+        <span class="ing-emoji">🫙</span>
+        <div class="ing-name">Groundnut Oil</div>
+        <div class="ing-qty">7g</div>
+      </div>
+      <div class="ingredient-card fat">
+        <span class="ing-emoji">💧</span>
+        <div class="ing-name">Water</div>
+        <div class="ing-qty">300ml</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEPS ===== -->
+<div class="section steps-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">👨‍🍳</div>
+      <div>
+        <div class="section-title" style="color: #2E7D32">Let's Cook!</div>
+        <div style="font-size:0.9rem; color:#558B2F; font-weight:700;">9 easy steps · ~25 minutes</div>
+      </div>
+    </div>
+
+    <div class="steps-list">
+
+      <div class="step-card s1">
+        <div class="step-num" style="color:var(--saffron)">1</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🧱</span>Wake Up the Soya!</div>
+          <div class="step-detail">
+            Boil 800ml of water with a pinch of salt. Add the soya chunks and let them bubble away for <strong>8 minutes</strong>.<br><br>
+            Drain them, rinse with cold water, then <strong>squeeze each chunk firmly</strong> — like you're wringing out a tiny sponge! This removes the raw taste. Chop them in half.
+          </div>
+          <div class="tip-bubble">⏱️ This takes 10 minutes</div>
+        </div>
+      </div>
+
+      <div class="step-card s2">
+        <div class="step-num" style="color:var(--sky)">2</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🌾</span>Rinse the Rice!</div>
+          <div class="step-detail">
+            Wash the rice in 2–3 changes of cold water until the water runs clear and clean. Soak it for <strong>10 minutes</strong>, then drain before using.
+          </div>
+          <div class="tip-bubble">💡 Do this while soya is boiling!</div>
+        </div>
+      </div>
+
+      <div class="step-card s3">
+        <div class="step-num" style="color:var(--mint)">3</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🥕</span>Chop the Veggie Gang!</div>
+          <div class="step-detail">
+            • Slice onion thin<br>
+            • Dice carrots into small cubes (~1cm)<br>
+            • Chop beans into 1cm pieces<br>
+            • Dice capsicum into 2cm chunks<br>
+            • Roughly chop tomatoes<br>
+            • Slit the green chillies lengthwise<br>
+            • Wash and roughly chop mint & coriander
+          </div>
+          <div class="tip-bubble">⚡ Do this in parallel with Step 1!</div>
+        </div>
+      </div>
+
+      <div class="step-card s4">
+        <div class="step-num" style="color:var(--tomato)">4</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🔥</span>The Sizzle Moment!</div>
+          <div class="step-detail">
+            Heat ghee + oil together in your pressure cooker on medium heat. Add the whole spices — cumin seeds, bay leaves, cardamom, cloves, cinnamon. Sauté for <strong>30 seconds</strong> until your kitchen smells AMAZING!
+          </div>
+          <div class="tip-bubble">⚠️ Don't burn them — just golden and fragrant!</div>
+        </div>
+      </div>
+
+      <div class="step-card s5">
+        <div class="step-num" style="color:var(--cardamom)">5</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🧅</span>The Flavour Base!</div>
+          <div class="step-detail">
+            Add onion slices. Stir around for <strong>2 minutes</strong> until soft and translucent. Add ginger-garlic paste + green chillies. Stir for another <strong>30 seconds</strong>.<br><br>
+            Don't brown the onion — just make it soft and sweet!
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card s6">
+        <div class="step-num" style="color:var(--turmeric)">6</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🍅</span>Veggies Join the Party!</div>
+          <div class="step-detail">
+            Add tomatoes and cook until pulpy (<strong>2 min</strong>). Then toss in carrots, beans, peas, and capsicum — stir for 1 minute. Now add all the ground spices: turmeric, chilli powder, coriander powder, garam masala, and salt. Give it a good stir for <strong>30 seconds</strong>!
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card s7">
+        <div class="step-num" style="color:var(--brown)">7</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🧱</span>The Main Team Arrives!</div>
+          <div class="step-detail">
+            Add the squeezed soya chunks — mix gently. Add the drained rice — fold gently (don't break those grains!). Stir in mint and coriander.<br><br>
+            Now, <strong>place paneer cubes on top — DO NOT MIX!</strong> Just lay them gently on top like a cozy blanket.
+          </div>
+          <div class="tip-bubble">🧀 Paneer on top = stays soft and perfect!</div>
+        </div>
+      </div>
+
+      <div class="step-card s8">
+        <div class="step-num" style="color:#29B6F6">8</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🫧</span>The Pressure Magic!</div>
+          <div class="step-detail">
+            Pour 300ml water gently around the edges (not over the paneer). Close the cooker. Cook for <strong>1 whistle on medium heat</strong>, then switch off!<br><br>
+            Now wait patiently for <strong>10 minutes</strong> of natural pressure release. Don't force it open!
+          </div>
+          <div class="tip-bubble">🧘 This rest time = perfect fluffy rice!</div>
+        </div>
+      </div>
+
+      <div class="step-card s9">
+        <div class="step-num" style="color:var(--mint)">9</div>
+        <div class="step-content">
+          <div class="step-title"><span class="step-emoji-title">🍋</span>The Grand Finale!</div>
+          <div class="step-detail">
+            Open carefully. Squeeze ½ lemon over the top. Gently fluff with a fork — don't mash! Scatter fresh coriander on top.
+          </div>
+          <div class="tip-bubble">🎉 Ready to eat! Divide into 4 portions!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== NUTRITION ===== -->
+<div class="section nutrition-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">💪</div>
+      <div>
+        <div class="section-title" style="color: var(--cardamom)">Your Superpowers</div>
+        <div style="font-size:0.9rem; color:#7B1FA2; font-weight:700;">per serving (1 of 4 plates ~600g)</div>
+      </div>
+    </div>
+
+    <div class="macro-row">
+      <div class="macro-card cal">
+        <div class="macro-icon">🔥</div>
+        <div class="macro-val">610</div>
+        <div class="macro-label">Calories</div>
+      </div>
+      <div class="macro-card prot">
+        <div class="macro-icon">💪</div>
+        <div class="macro-val">59g</div>
+        <div class="macro-label">Protein</div>
+      </div>
+      <div class="macro-card carb">
+        <div class="macro-icon">⚡</div>
+        <div class="macro-val">67g</div>
+        <div class="macro-label">Carbs</div>
+      </div>
+      <div class="macro-card fat">
+        <div class="macro-icon">🫐</div>
+        <div class="macro-val">14g</div>
+        <div class="macro-label">Fat</div>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:18px 20px; margin-top:14px; box-shadow:0 4px 12px rgba(0,0,0,0.07);">
+      <div style="font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--brown); margin-bottom:12px;">🌟 Vitamins & Minerals</div>
+      <div class="superpower-grid">
+        <div class="superpower-card">
+          <div class="sp-emoji">🦴</div>
+          <div class="sp-name">Calcium</div>
+          <div class="sp-val">43% RDA</div>
+        </div>
+        <div class="superpower-card">
+          <div class="sp-emoji">🩸</div>
+          <div class="sp-name">Iron</div>
+          <div class="sp-val">31% RDA</div>
+        </div>
+        <div class="superpower-card">
+          <div class="sp-emoji">👁️</div>
+          <div class="sp-name">Vitamin A</div>
+          <div class="sp-val">84% RDA</div>
+        </div>
+        <div class="superpower-card">
+          <div class="sp-emoji">🍊</div>
+          <div class="sp-name">Vitamin C</div>
+          <div class="sp-val">50% RDA</div>
+        </div>
+        <div class="superpower-card">
+          <div class="sp-emoji">🌿</div>
+          <div class="sp-name">Fiber</div>
+          <div class="sp-val">14.4g</div>
+        </div>
+        <div class="superpower-card">
+          <div class="sp-emoji">⚡</div>
+          <div class="sp-name">Manganese</div>
+          <div class="sp-val">52% RDA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPARISON ===== -->
+<div class="section compare-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">🏆</div>
+      <div>
+        <div class="section-title" style="color: #1565C0">How It Stacks Up!</div>
+        <div style="font-size:0.9rem; color:#1976D2; font-weight:700;">protein per plate vs. other meals</div>
+      </div>
+    </div>
+
+    <div class="compare-bars">
+      <div class="compare-item">
+        <div class="compare-label">
+          <span>🍲 This Soya Pulao</span>
+          <span class="protein-badge">59g protein!</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%; background:linear-gradient(90deg, var(--mint), #2196F3);">59g</div>
+        </div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-label">
+          <span>🍛 Dal Rice + Sabzi</span>
+          <span class="protein-badge">20g</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:34%; background:#90A4AE;">20g</div>
+        </div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-label">
+          <span>🧀 Paneer Butter Masala + Roti</span>
+          <span class="protein-badge">24g</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:41%; background:#FFAB91;">24g</div>
+        </div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-label">
+          <span>🥘 Veg Biryani (restaurant)</span>
+          <span class="protein-badge">18g</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:31%; background:#CE93D8;">18g</div>
+        </div>
+      </div>
+      <div class="compare-item">
+        <div class="compare-label">
+          <span>🫓 Chole Bhature</span>
+          <span class="protein-badge">22g</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:37%; background:#FFD54F; color:#555;">22g</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px; background:white; border-radius:20px; padding:16px 18px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.07);">
+      <span style="font-family:'Fredoka One',cursive; font-size:1.2rem; color:var(--mint);">3x MORE PROTEIN</span>
+      <span style="font-size:0.9rem; font-weight:700; color:#5D4037;"> than most Indian meals at similar calories! 🎉</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div class="section tips-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">💡</div>
+      <div>
+        <div class="section-title" style="color: #E65100">Secret Tips!</div>
+        <div style="font-size:0.9rem; color:#BF360C; font-weight:700;">for perfect results every time</div>
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🤜</div>
+        <div class="tip-text"><strong>Squeeze soya hard!</strong> Wet soya = bland and raw-tasting. Squeeze every chunk firmly.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💧</div>
+        <div class="tip-text"><strong>Only 300ml water!</strong> Soya holds lots of water, so less is more here.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🧘</div>
+        <div class="tip-text"><strong>Wait for natural release!</strong> Force-opening toughens the paneer. Be patient!</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🧀</div>
+        <div class="tip-text"><strong>Paneer on top, don't mix!</strong> Laying it on top keeps cubes beautifully intact.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚖️</div>
+        <div class="tip-text"><strong>Weigh ingredients the first time.</strong> After that, you'll know by eye!</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📦</div>
+        <div class="tip-text"><strong>Portion right away!</strong> Pack into 4 containers immediately for easy grab-and-go meals.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STORAGE ===== -->
+<div class="section storage-bg">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-emoji">📦</div>
+      <div>
+        <div class="section-title" style="color: var(--tomato)">Storing Your Pulao</div>
+        <div style="font-size:0.9rem; color:#C62828; font-weight:700;">make ahead & enjoy later!</div>
+      </div>
+    </div>
+
+    <div class="storage-cards">
+      <div class="storage-card" style="border-top: 5px solid var(--sky);">
+        <div class="storage-icon">🧊</div>
+        <div class="storage-title">Fridge</div>
+        <div class="storage-duration">48–60 hours in airtight container</div>
+      </div>
+      <div class="storage-card" style="border-top: 5px solid var(--tomato);">
+        <div class="storage-icon">❄️</div>
+        <div class="storage-title">Freezer</div>
+        <div class="storage-duration">Not recommended — paneer goes rubbery!</div>
+      </div>
+      <div class="storage-card" style="border-top: 5px solid var(--turmeric);">
+        <div class="storage-icon">♨️</div>
+        <div class="storage-title">Microwave Reheat</div>
+        <div class="storage-duration">Add 1 tbsp water · 2 min · stir · 30 sec</div>
+      </div>
+      <div class="storage-card" style="border-top: 5px solid var(--mint);">
+        <div class="storage-icon">🍳</div>
+        <div class="storage-title">Stovetop Reheat</div>
+        <div class="storage-duration">Splash of water · low heat · covered · 4–5 min</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BACK COVER ===== -->
+<div class="back-cover">
+  <div class="max-w">
+    <div style="font-size:4rem; margin-bottom:16px;">🎉</div>
+    <h2>You Did It!</h2>
+    <p>
+      You just made one of the most nutritious, protein-packed vegetarian meals possible — in just one pot and 25 minutes. That's pretty magical! 🌟
+    </p>
+    <div class="fact-bubbles">
+      <div class="fact-bubble">✅ No added sugar</div>
+      <div class="fact-bubble">✅ No preservatives</div>
+      <div class="fact-bubble">✅ Complete amino acids</div>
+      <div class="fact-bubble">✅ High fiber</div>
+      <div class="fact-bubble">✅ 59g protein / serve</div>
+      <div class="fact-bubble">✅ One pot, easy cleanup</div>
+    </div>
+    <p style="margin-top:28px; font-size:0.9rem; opacity:0.75;">🥗 Great with curd on the side · 🥒 Add cucumber slices for freshness · 🥜 Top with roasted peanuts for crunch</p>
+  </div>
+</div>
+
+<div class="zigzag-top"></div>
+
+</body>
+</html>
