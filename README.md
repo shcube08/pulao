@@ -100,7 +100,7 @@ Add tomatoes, cook until pulpy (~2 min). Add all remaining vegetables, stir 1 mi
 ### Step 8 — Pressure cook (15 min including natural release)
 1. Pour 300ml water gently around the edges (not over paneer)
 2. Close lid
-3. **1 whistle on medium heat**, then switch off immediately
+3. **3 whistle on medium heat**, then switch off immediately
 4. **Natural pressure release for 10 minutes** — don't force open
 
 ### Step 9 — Finish (1 min)
