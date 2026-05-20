@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/28055442/README.md)
 # 🍲 Soya Pulao — High-Protein Vegetarian One-Pot Meal
 
 > **59g protein per serving · 25 minutes · One pot · Batch-cook friendly**
